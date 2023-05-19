@@ -1,0 +1,63 @@
+<h1 class="text-center pb-3">Create Compensation Plan</h1>
+<form [formGroup]="compensationPlanForm" (ngSubmit)="createCompensation()">
+    <small class="form-text text-danger">All the fields marked with * are mandetory</small>
+    <div class="row mb-3">
+        <label class="col-md-2 col-form-label">Partner Name <small class="text-danger">*</small></label>
+        <div class="col-md-10">
+            <input type="text" class="form-control" name="partnerName" id="partnerName" formControlName="partnerName">
+        </div>
+    </div>
+    <div class="row mb-3">
+        <label class="col-md-2 col-form-label">Plan Name <small class="text-danger">*</small></label>
+        <div class="col-md-10">
+            <input type="text" class="form-control" name="planName" id="planName" formControlName="planName">
+        </div>
+    </div>
+    <div class="row mb-3">
+        <label class="col-md-2 col-form-label">Plan Type <small class="text-danger">*</small></label>
+        <select class="custom-select col-md-10" name="planType" id="planType" formControlName="planType">
+            <option value="volume">Volume</option>
+            <option value="revenue">Revenue</option>
+        </select>
+    </div>
+    <div class="row mb-3">
+        <div class="form-group col-md-6">
+            <label>Minimum Percentage <small class="text-danger">*</small></label>
+            <input type="text" class="form-control" name="minPercent" id="minPercent" formControlName="minPercent">
+        </div>
+        <div class="form-group col-md-6">
+            <label>Maximum Percentage <small class="text-danger">*</small></label>
+            <input type="text" class="form-control" name="maxPercent" id="maxPercent" formControlName="maxPercent">
+        </div>
+    </div>
+    <small *ngIf="showValidationError('maxPercent') || showValidationError('minPercent')" class="form-text text-danger">
+        Percentage value should be numeric and between 0 and 100
+    </small>
+    <div class="row mb-3">
+        <div class="form-group col-md-6">
+            <label>Start Date <small class="text-danger">*</small></label>
+            <div class="input-group">
+                <input class="form-control" placeholder="yyyy-mm-dd" name="startDate" id="startDate"
+                    formControlName="startDate" ngbDatepicker #startDate="ngbDatepicker" />
+                <button class="btn btn-outline-secondary bi bi-calendar3" (click)="startDate.toggle()"
+                    type="button"></button>
+            </div>
+        </div>
+        <div class="form-group col-md-6">
+            <label>End Date <small class="text-danger">*</small></label>
+            <div class="input-group">
+                <input class="form-control" placeholder="yyyy-mm-dd" name="endDate" id="endDate"
+                    formControlName="endDate" ngbDatepicker #endDate="ngbDatepicker" />
+                <button class="btn btn-outline-secondary bi bi-calendar3" (click)="endDate.toggle()"
+                    type="button"></button>
+            </div>
+        </div>
+    </div>
+    <small *ngIf="showValidationError('startDate')" class="form-text text-danger">
+        Start and end dates are mandatory.<br>Start date should be greater than end date.
+    </small>
+    <div class="d-flex flex-row-reverse">
+        <button [disabled]="!compensationPlanForm.valid" type="submit" class="btn btn-success mx-2">Save</button>
+        <button type="button" class="btn btn-danger" (click)="clear()">Clear</button>
+    </div>
+</form>

@@ -1,0 +1,29 @@
+<h1 class="text-center pb-3">All Users</h1>
+<div class="table-responsive">
+    <table class="table table-responsive border-success table-striped table-success table-hover">
+        <thead>
+            <tr>
+                <th>EmployeeId</th>
+                <th>Email</th>
+                <th>FirstName</th>
+                <th>LastName</th>
+                <th>Location</th>
+                <th>JobTitle</th>
+                <th>Department</th>
+                <th>Role</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let user of listOfUser">
+                <th>{{user.employeeId}}</th>
+                <td>{{user.email}}</td>
+                <td>{{user.firstName}}</td>
+                <td>{{user.lastName}}</td>
+                <td>{{user.location}}</td>
+                <td>{{user.jobTitle}}</td>
+                <td>{{user.department}}</td>
+                <td>{{user.role}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>

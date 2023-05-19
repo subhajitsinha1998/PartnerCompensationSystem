@@ -1,0 +1,5 @@
+@import "~bootstrap-icons/font/bootstrap-icons.css";
+
+input.ng-invalid.ng-touched {
+    border: 1px solid red;
+}
